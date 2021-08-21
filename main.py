@@ -1,3 +1,4 @@
+#from graphics import Graphics
 from turtle import *
 
 screen=Screen()
@@ -5,7 +6,7 @@ screen.bgcolor("black")
 screen.setup(width=800,height=600)
 screen.title("Hangman")
 
-
+#graphics=Graphics()
 turtle=Turtle()
 turtle.hideturtle()
 turtle.goto(0,-200)
@@ -34,6 +35,7 @@ word_length = len(chosen_word)
 display = []
 for _ in range(word_length):
     display += "_"
+
 
 turtle.write(f"{' '.join(display)}",align="center",font=("Arial", 20, "normal"))
 turtle1.write("Guess a letter!",align="center",font=("Arial", 10, "normal"))
