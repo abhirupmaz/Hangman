@@ -5,11 +5,14 @@ from graphics import Graphics
 from dashes import Dash
 from turtle import *
 from finaloutput import Message
+from logo import Logo
 
 screen=Screen()
 screen.bgcolor("black")
-screen.setup(width=800,height=600)
+screen.setup(width=800,height=800)
 screen.title("Hangman")
+
+logo=Logo(screen)
 
 graphics=Graphics()
 
@@ -25,7 +28,6 @@ game_is_finished = False
 lives = 6
 
 chosen_word = random.choice(word_list)
-print(chosen_word)
 
 status_bar.guess_letter()
 

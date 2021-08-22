@@ -8,9 +8,9 @@ class Message(Turtle):
     def __init__(self):
         super().__init__()
         self.hideturtle()
-        self.pencolor("white")
+        self.pencolor("yellow")
         self.penup()
-        self.goto(0,200)
+        self.goto(0,-135)
     
     def winning_message(self):
         self.write(random.choice(win),align="center",font=("Arial", 25, "normal"))
