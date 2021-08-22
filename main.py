@@ -1,5 +1,6 @@
 from graphics import Graphics
 from turtle import *
+from finaloutput import Message
 
 screen=Screen()
 screen.bgcolor("black")
@@ -7,6 +8,9 @@ screen.setup(width=800,height=600)
 screen.title("Hangman")
 
 graphics=Graphics()
+
+message=Message()
+
 turtle=Turtle()
 turtle.hideturtle()
 turtle.goto(0,-200)
@@ -17,9 +21,6 @@ turtle1.hideturtle()
 turtle1.goto(0,-250)
 turtle1.pencolor("white")
 
-turtle2=Turtle()
-turtle2.hideturtle()
-turtle2.goto(0,200)
 
 call=[graphics.right_leg, graphics.left_leg, graphics.right_arm, graphics.left_arm, graphics.body, graphics.head]
 import random
@@ -66,13 +67,10 @@ while not game_is_finished:
         call[lives]()
         if lives == 0:
             game_is_finished = True
-            turtle2.pencolor("red")
-            turtle2.write("Good try but you Lose!",align="center",font=("Arial", 25, "normal"))
+            message.losing_message()
     
     if not "_" in display:
         game_is_finished = True
-        turtle2.pencolor("green")
-        turtle2.write("Alright smartypants, you win!",align="center",font=("Arial", 25, "normal"))
-        # print("Smartypants, you win!")
+        message.winning_message()
 
 screen.exitonclick()
