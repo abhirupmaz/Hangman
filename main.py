@@ -19,9 +19,9 @@ turtle1.pencolor("white")
 
 turtle2=Turtle()
 turtle2.hideturtle()
-turtle2.goto(0,0)
+turtle2.goto(0,200)
 
-
+call=[graphics.right_leg, graphics.left_leg, graphics.right_arm, graphics.left_arm, graphics.body, graphics.head]
 import random
 from hangman_words import word_list
 
@@ -63,6 +63,7 @@ while not game_is_finished:
         turtle1.clear()
         turtle1.write(f"You guessed {guess}, that's not in the word. You lose a life.",align="center",font=("Arial", 10, "normal"))
         lives -= 1
+        call[lives]()
         if lives == 0:
             game_is_finished = True
             turtle2.pencolor("red")
