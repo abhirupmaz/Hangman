@@ -5,9 +5,16 @@ class Graphics(Turtle):
         super().__init__()
         self.hideturtle()
         self.pencolor('white')
-        self.stand()
+        self.stand()        
 
     def stand(self):
+        self.penup()
+        self.setheading(270)
+        self.forward(40)
+        self.setheading(0)
+        self.forward(50)
+        self.pendown()
+        self.width(4)
         self.setheading(90)
         for _ in range(9):
             self.forward(10)
