@@ -1,4 +1,4 @@
-#from graphics import Graphics
+from graphics import Graphics
 from turtle import *
 
 screen=Screen()
@@ -6,7 +6,7 @@ screen.bgcolor("black")
 screen.setup(width=800,height=600)
 screen.title("Hangman")
 
-#graphics=Graphics()
+graphics=Graphics()
 turtle=Turtle()
 turtle.hideturtle()
 turtle.goto(0,-200)
@@ -40,8 +40,8 @@ for _ in range(word_length):
 turtle.write(f"{' '.join(display)}",align="center",font=("Arial", 20, "normal"))
 turtle1.write("Guess a letter!",align="center",font=("Arial", 10, "normal"))
 while not game_is_finished:
-    guess = input("Guess a letter: ").lower()
-
+    # guess = input("Guess a letter: ").lower()
+    guess = textinput('Hangman','Guess a letter: ')
 
     if guess in display:
         # print(f"You've already guessed {guess}")
