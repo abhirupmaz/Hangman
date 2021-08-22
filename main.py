@@ -1,4 +1,5 @@
 from graphics import Graphics
+from dashes import Dash
 from turtle import *
 
 screen=Screen()
@@ -7,10 +8,11 @@ screen.setup(width=800,height=600)
 screen.title("Hangman")
 
 graphics=Graphics()
-turtle=Turtle()
-turtle.hideturtle()
-turtle.goto(0,-200)
-turtle.pencolor("white")
+dash=Dash()
+#turtle=Turtle()
+#turtle.hideturtle()
+#turtle.goto(0,-200)
+#turtle.pencolor("white")
 
 turtle1=Turtle()
 turtle1.hideturtle()
@@ -30,32 +32,36 @@ lives = 6
 
 chosen_word = random.choice(word_list)
 print(chosen_word)
-word_length = len(chosen_word)
+#word_length = len(chosen_word)
 
-display = []
-for _ in range(word_length):
-    display += "_"
+#display = []
+#for _ in range(word_length):
+#    display += "_"
 
-
-turtle.write(f"{' '.join(display)}",align="center",font=("Arial", 20, "normal"))
+dash.make_dashes(chosen_word)
+dash.show_dashes()
+#dash.write(f"{' '.join(display)}",align="center",font=("Arial", 20, "normal"))
 turtle1.write("Guess a letter!",align="center",font=("Arial", 10, "normal"))
 while not game_is_finished:
     # guess = input("Guess a letter: ").lower()
     guess = textinput('Hangman','Guess a letter: ')
 
-    if guess in display:
+    if guess in dash.display:
         # print(f"You've already guessed {guess}")
         turtle1.clear()
         turtle1.write(f"You've already guessed {guess}",align="center",font=("Arial", 10, "normal"))
-
-    for position in range(word_length):
-        letter = chosen_word[position]
-        if letter == guess:
-            display[position] = letter
-            turtle1.clear()
-            turtle1.write("Correct guess!",align="center",font=("Arial", 10, "normal"))
-    turtle.clear()
-    turtle.write(f"{' '.join(display)}",align="center",font=("Arial", 20, "normal"))    
+    else:
+        for position in range(len(chosen_word)):
+            letter = chosen_word[position]
+            if letter == guess:
+                dash.update_dash(position,letter)
+                #display[position] = letter
+                turtle1.clear()
+                turtle1.write("Correct guess!",align="center",font=("Arial", 10, "normal"))
+            
+    dash.clear()
+    dash.show_dashes()
+    #dash.write(f"{' '.join(display)}",align="center",font=("Arial", 20, "normal"))    
     # print(f"{' '.join(display)}")
 
     if guess not in chosen_word:
@@ -69,7 +75,7 @@ while not game_is_finished:
             turtle2.pencolor("red")
             turtle2.write("Good try but you Lose!",align="center",font=("Arial", 25, "normal"))
     
-    if not "_" in display:
+    if not "_" in dash.display:
         game_is_finished = True
         turtle2.pencolor("green")
         turtle2.write("Alright smartypants, you win!",align="center",font=("Arial", 25, "normal"))
