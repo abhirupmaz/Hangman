@@ -4,7 +4,7 @@ class Dash(Turtle):
     def __init__(self):
         super().__init__()
         self.hideturtle()
-        self.goto(0,-200)
+        self.goto(0,-230)
         self.pencolor("white")
         self.display=[]
 

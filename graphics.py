@@ -4,6 +4,7 @@ class Graphics(Turtle):
     def __init__(self):
         super().__init__()
         self.hideturtle()
+        self.goto(0,-20)
         self.pencolor('white')
         self.stand()        
 
