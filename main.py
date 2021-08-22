@@ -40,8 +40,8 @@ for _ in range(word_length):
 turtle.write(f"{' '.join(display)}",align="center",font=("Arial", 20, "normal"))
 turtle1.write("Guess a letter!",align="center",font=("Arial", 10, "normal"))
 while not game_is_finished:
-    guess = input("Guess a letter: ").lower()
-
+    # guess = input("Guess a letter: ").lower()
+    guess = textinput('Hangman','Guess a letter: ')
 
     if guess in display:
         # print(f"You've already guessed {guess}")
